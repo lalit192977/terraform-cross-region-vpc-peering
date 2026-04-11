@@ -1,0 +1,53 @@
+# ---------------- Terraform ----------------
+
+# Local .terraform directory
+.terraform/
+
+# Terraform state files (VERY IMPORTANT to ignore)
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+.terraform.lock.hcl
+
+# Ignore tfvars if it contains secrets
+# terraform.tfvars
+ *.tfvars
+
+# Terraform plan output
+*.tfplan
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI config files
+.terraformrc
+terraform.rc
+
+# ---------------- OS Files ----------------
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# ---------------- Editor / IDE ----------------
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+
+# ---------------- Logs ----------------
+*.log
+
+# ---------------- Environment files ----------------
+.env
+.env.*
