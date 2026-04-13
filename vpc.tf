@@ -1,5 +1,6 @@
 # primary vpc in the primary region
 resource "aws_vpc" "primary_vpc" {
+  provider = aws.ap
   cidr_block           = var.primary_cidr_block
   instance_tenancy     = "default"
   enable_dns_hostnames = true

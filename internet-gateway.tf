@@ -1,5 +1,6 @@
 # internet gateway for primary region and for primary vpc
 resource "aws_internet_gateway" "primary_igw" {
+  provider = aws.ap
   vpc_id = aws_vpc.primary_vpc.id
 
   tags = {

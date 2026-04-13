@@ -5,20 +5,21 @@ resource "tls_private_key" "key" {
 }
 
 # storing private key locally
-resource "local_file" "priate_key" {
+resource "local_file" "private_key" {
   content  = tls_private_key.key.private_key_pem
   filename = "peering-key.pem"
 }
 
 # storing public key to the primary region
 resource "aws_key_pair" "key1" {
+  provider = aws.ap
   key_name   = "vpc1-key"
-  public_key = tls_private_key.key.public_key_pem
+  public_key = tls_private_key.key.public_key_openssh
 }
 
 # storing public key in the secondary region
 resource "aws_key_pair" "key2" {
   provider   = aws.us
   key_name   = "vpc2-key"
-  public_key = tls_private_key.key.public_key_pem
+  public_key = tls_private_key.key.public_key_openssh
 }

@@ -39,3 +39,10 @@ variable "secondary_subnet1_cidr" {
   type        = string
   default     = "10.1.1.0/24"
 }
+
+# instance type
+variable "instance_type" {
+  description = "intance type"
+  type        = string
+  default     = "t2.nano"
+}

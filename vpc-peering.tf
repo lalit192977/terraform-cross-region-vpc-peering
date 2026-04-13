@@ -1,8 +1,9 @@
 # vpc peering requrester form the primary region to the secondary region
 resource "aws_vpc_peering_connection" "peer" {
+  provider = aws.ap
   vpc_id      = aws_vpc.primary_vpc.id
   peer_vpc_id = aws_vpc.secondary_vpc.id
-  peer_region = var.primary_region
+  peer_region = var.secondary_region
   auto_accept = false
 
   tags = {
