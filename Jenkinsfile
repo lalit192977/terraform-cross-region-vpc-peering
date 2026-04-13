@@ -12,26 +12,37 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/lalit192977/terraform-cross-region-vpc-peering.git'
             }
         }
-        stage('init'){
+        stage('init and plan'){
             steps{
-                sh 'terraform init'
-            }
-        }
-        stage('plan'){
-            steps{
-                sh 'terraform plan'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'AWS-Credentials'
+                ]]) {
+                    sh 'terraform init'
+                    sh 'terraform plan'
+                }
             }
         }
         stage('apply'){
             steps{
-                input message: "Apply Changes?"
-                sh 'terraform apply --auto-approve'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'AWS-Credentials'
+                ]]) {
+                    input message: "Apply Changes?"
+                    sh 'terraform apply -auto-approve'
+                }
             }
         }
         stage('Destroy') {
             steps {
-                input message: "Destroy infrastructure?"
-                sh 'terraform destroy -auto-approve'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'AWS-Credentials'
+                ]]) {
+                    input message: "Destroy infrastructure?"
+                    sh 'terraform destroy -auto-approve'
+                }
             }
         }
     }
