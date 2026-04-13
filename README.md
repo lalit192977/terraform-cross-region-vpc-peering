@@ -37,7 +37,7 @@ Two EC2 instances are deployed in separate VPCs across regions, and connectivity
 
 ### 🔹 Successful Cross-Region Ping (Private IP)
 
-![Ping Test](./images/Output.PNG)
+![Ping Test](./images/private-ip-connectivity.PNG)
 ![Ping Test2](./images/full%20output.PNG)
 
 > Demonstrates successful communication between EC2 instances using **private IP via VPC Peering**.
